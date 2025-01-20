@@ -1,0 +1,56 @@
+[
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\gpio.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\gpio.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\gpio.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\gpio.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\main.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\main.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\main.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\main.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\nvic.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\nvic.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\nvic.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\nvic.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\rcc.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\rcc.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\rcc.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\rcc.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\syscall.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\syscall.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\syscall.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\syscall.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\sysmem.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\sysmem.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\sysmem.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\sysmem.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\systick.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\systick.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\systick.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\systick.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/Inc\" -fdata-sections -ffunction-sections -Wl,--gc-sections -g -std=gnu11 -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Src\\uart.c.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\uart.c\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Src\\uart.c",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Src\\uart.c.obj"
+},
+{
+  "directory": "C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/build/debug",
+  "command": "D:\\ESTRUC~1\\STM32C~1.0\\GNU-TO~1\\bin\\AR19DD~1.EXE -DDEBUG -I\"C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control\" -g -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Wpedantic -Wno-unused-parameter -x assembler-with-cpp -MMD -MP -Og -g3 -ggdb -o CMakeFiles\\Sistema-de-control.dir\\Startup\\startup_stm32l476rgtx.s.obj -c \"C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Startup\\startup_stm32l476rgtx.s\"",
+  "file": "C:\\Users\\juane\\OneDrive\\Escritorio\\Estructuras parte 2\\Sistema-de-Control-de-Acceso\\Sistema-de-control\\Startup\\startup_stm32l476rgtx.s",
+  "output": "CMakeFiles\\Sistema-de-control.dir\\Startup\\startup_stm32l476rgtx.s.obj"
+}
+]

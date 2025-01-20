@@ -1,0 +1,11 @@
+# ninja log v5
+25	235	7587545719514342	CMakeFiles/Sistema-de-control.dir/Startup/startup_stm32l476rgtx.s.obj	778c35f57b86e90d
+36	431	7590818207816177	CMakeFiles/Sistema-de-control.dir/Src/gpio.c.obj	a606bca93f73925e
+32	221	7590935253211014	CMakeFiles/Sistema-de-control.dir/Src/main.c.obj	a11a183cb6ddd2bc
+16	390	7587545721079509	CMakeFiles/Sistema-de-control.dir/Src/sysmem.c.obj	e105fe0ca3a09acc
+33	228	7587571086569003	CMakeFiles/Sistema-de-control.dir/Src/nvic.c.obj	331a8b8b31d2f49c
+10	646	7587545723743407	CMakeFiles/Sistema-de-control.dir/Src/syscall.c.obj	f847101034b820b8
+225	560	7590935255182814	Sistema-de-control.elf	843514debe3ef1ba
+40	238	7587571086898406	CMakeFiles/Sistema-de-control.dir/Src/rcc.c.obj	dc9a3fbc2a5beebd
+42	224	7590935253230967	CMakeFiles/Sistema-de-control.dir/Src/uart.c.obj	d64bd70f2922620f
+14	175	7590366001237278	CMakeFiles/Sistema-de-control.dir/Src/systick.c.obj	d6d3606a8dfcae02

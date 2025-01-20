@@ -1,0 +1,3 @@
+C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/CMakeFiles/Sistema-de-control.dir
+C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/CMakeFiles/edit_cache.dir
+C:/Users/juane/OneDrive/Escritorio/Estructuras parte 2/Sistema-de-Control-de-Acceso/Sistema-de-control/CMakeFiles/rebuild_cache.dir
