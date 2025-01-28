@@ -104,7 +104,7 @@ proyecto/
 
 0. Alternativamente puedes seguir los pasos de este video para [compilar y depurar un proyecto](https://www.youtube.com/watch?v=yasF8z0BCzM).
 1. Abre la paleta de comandos (`Ctrl+Shift+P`)
-2. Selecciona **Tasks: Run Build Task** o presiona `Ctrl+Shift+B`. La primer vez te pedirá selecciona `Debug`
+2. Selecciona **Tasks: Run Build Task** o presiona `Ctrl+Shift+B` y selecciona **CMAKE: Build**. *La -primera vez- te pedirá seleccionar `Debug`*
 3. VS Code ejecutará la tarea de compilación definida en el archivo `tasks.json`
 
 También puedes usar los botones de la barra inferior de VS Code:
@@ -134,18 +134,33 @@ El archivo `systick.c` implementa un temporizador basado en milisegundos:
 ```c
 #include "systick.h"
 
-volatile uint32_t ms_counter = 0;
+typedef struct {
+    volatile uint32_t CTRL;
+    volatile uint32_t LOAD;
+    volatile uint32_t VAL;
+    volatile uint32_t CALIB;
+
+} SysTick_t;
+
+#define SysTick ((SysTick_t *)0xE000E010) // Base address of SysTick
+
+volatile uint32_t ms_counter = 0; // Counter for milliseconds
 
 void configure_systick_and_start(void)
 {
-    SysTick->CTRL = 0x4;     // Deshabilitar SysTick para configuración
-    SysTick->LOAD = 3999;    // Configuración para 1 ms (reloj de 4 MHz)  {4MHz / 4000 = 1KHz -> T = 1ms}
-    SysTick->CTRL = 0x7;     // Habilitar SysTick con interrupción
+    SysTick->CTRL = 0x4;     // Disable SysTick for configuration, use processor clock
+    SysTick->LOAD = 3999;    // Reload value for 1 ms (assuming 4 MHz clock)
+    SysTick->CTRL = 0x7;     // Enable SysTick, processor clock, no interrupt
 }
 
 uint32_t systick_GetTick(void)
 {
     return ms_counter;
+}
+
+void systick_reset(void)
+{
+    ms_counter = 0;
 }
 
 void SysTick_Handler(void)
@@ -162,6 +177,23 @@ El archivo `gpio.c` implementa la configuración para controlar el LED y el bot�
 
 ```c
 #include "gpio.h"
+#include "rcc.h"
+#include "systick.h"
+
+#define EXTI_BASE 0x40010400
+#define EXTI ((EXTI_t *)EXTI_BASE)
+
+#define EXTI15_10_IRQn 40
+#define NVIC_ISER1 ((uint32_t *)(0xE000E104)) // NVIC Interrupt Set-Enable Register
+
+#define SYSCFG_BASE 0x40010000
+#define SYSCFG ((SYSCFG_t *)SYSCFG_BASE)
+
+#define GPIOA ((GPIO_t *)0x48000000) // Base address of GPIOA
+#define GPIOC ((GPIO_t *)0x48000800) // Base address of GPIOC
+
+#define LED_PIN 5 // Pin 5 of GPIOA
+#define BUTTON_PIN 13 // Pin 13 of GPIOC
 
 void configure_gpio_for_usart(void)
 {
@@ -193,22 +225,32 @@ void configure_gpio_for_usart(void)
 
 void configure_gpio(void)
 {
-   *RCC_AHB2ENR |= (1 << 0) | (1 << 2); // Habilitar reloj para GPIOA y GPIOC
+   *RCC_AHB2ENR |= (1 << 0) | (1 << 2); // Enable clock for GPIOA and GPIOC
 
-    // Configurar PA5 como salida (LED)
-    GPIOA->MODER &= ~(3U << (5 * 2)); // Limpiar bits de modo
-    GPIOA->MODER |= (1U << (5 * 2));  // Configurar como salida
+    // Configure PA5 as output
+    GPIOA->MODER &= ~(3U << (LED_PIN * 2)); // Clear mode bits for PA5
+    GPIOA->MODER |= (1U << (LED_PIN * 2));  // Set output mode for PA5
 
-    // Configurar PC13 como entrada (Botón)
-    GPIOC->MODER &= ~(3U << (13 * 2)); // Limpiar bits de modo
+    // Configure PC13 as input
+    GPIOC->MODER &= ~(3U << (BUTTON_PIN * 2)); // Clear mode bits for PC13
 
-    // Configurar interrupción para el botón (EXTI13)
-    *RCC_APB2ENR |= (1 << 0); // Habilitar reloj para SYSCFG
-    SYSCFG->EXTICR[3] &= ~(0xF << 4); // Limpiar bits para EXTI13
-    SYSCFG->EXTICR[3] |= (0x2 << 4);  // Mapear EXTI13 al puerto C
-    EXTI->FTSR1 |= (1 << 13);  // Configurar disparo por flanco descendente
-    EXTI->IMR1 |= (1 << 13);   // Desenmascarar la línea EXTI13
-    NVIC->ISER[1] |= (1 << 8); // Habilitar interrupción EXTI15_10
+    // Enable clock for SYSCFG
+    *RCC_APB2ENR |= (1 << 0); // RCC_APB2ENR_SYSCFGEN
+
+    // Configure SYSCFG EXTICR to map EXTI13 to PC13
+    SYSCFG->EXTICR[3] &= ~(0xF << 4); // Clear bits for EXTI13
+    SYSCFG->EXTICR[3] |= (0x2 << 4);  // Map EXTI13 to Port C
+
+    // Configure EXTI13 for falling edge trigger
+    EXTI->FTSR1 |= (1 << BUTTON_PIN);  // Enable falling trigger
+    EXTI->RTSR1 &= ~(1 << BUTTON_PIN); // Disable rising trigger
+
+    // Unmask EXTI13
+    EXTI->IMR1 |= (1 << BUTTON_PIN);
+
+    // Enable EXTI15_10 interrupt
+    *NVIC_ISER1 |= (1 << (EXTI15_10_IRQn - 32));
+    
 }
 
 // Emula el comprtamiento de la puerta
@@ -256,7 +298,7 @@ void EXTI15_10_IRQHandler(void)
 }
 ```
 
-Llama a esta función en `main.c` para inicializar los GPIOs.
+Llama a `configure_gpio()` en `main.c` para inicializar los GPIOs.
 
 ### 2.3 Configuración de UART
 
@@ -264,16 +306,30 @@ El archivo `uart.c` implementa la configuración para la comunicación serial y 
 
 ```c
 #include "uart.h"
+#include "rcc.h"
+#include "nvic.h"
+#include "gpio.h"
+
+static volatile command_t last_command = CMD_NONE;
 
 void usart2_init(void)
 {
-    configure_gpio_for_usart(); // Inicializar los pines para el USART2
-    *RCC_APB1ENR1 |= RCC_APB1ENR1_USART2EN; // Habilitar reloj para USART2
+    configure_gpio_for_usart();
 
-    USART2->CR1 &= ~USART_CR1_UE; // Deshabilitar USART
-    USART2->BRR = BAUD_9600_4MHZ; // Configurar baudrate a 9600
-    USART2->CR1 |= USART_CR1_TE | USART_CR1_RE; // Habilitar transmisor y receptor
-    USART2->CR1 |= USART_CR1_UE; // Habilitar USART
+    *RCC_APB1ENR1 |= RCC_APB1ENR1_USART2EN;
+
+    // 1. Desactivar la UART
+    USART2->CR1 &= ~USART_CR1_UE;
+    // 2. Configurar la velocidad de transmisión
+    USART2->BRR = BAUD_9600_4MHZ;
+    // 3. Configurar el número de bits de datos
+    USART2->CR1 &= ~USART_CR1_M;
+    // 4. Configurar el número de bits de parada
+    USART2->CR2 &= ~USART_CR2_STOP;
+    // 5. Habilitar Transmisor y Receptor
+    USART2->CR1 |= USART_CR1_TE | USART_CR1_RE;
+    // 6. Habilitar la UART
+    USART2->CR1 |= USART_CR1_UE;
 
     // Activar interrupción de RXNE
     USART2->CR1 |= USART_CR1_RXNEIE; 
@@ -295,7 +351,6 @@ command_t usart2_get_command(void)
     return cmd;
 }
 
-
 void USART2_IRQHandler(void)
 {
     uint32_t isr = USART2->ISR;
@@ -308,6 +363,7 @@ void USART2_IRQHandler(void)
         }
     }
 }
+
 ```
 
 Llama a `usart2_init()` en `main.c` para inicializar la UART y utiliza `usart2_send_string()` para enviar datos.
